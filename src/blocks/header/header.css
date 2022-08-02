@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 23px;
+}
+
+.header__title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.header__help {
+  display: flex;
+  column-gap: 24px;
+  align-items: center;
+}
+
+.header__help-icon {
+  width: 24px;
+  height: 24px;
+}

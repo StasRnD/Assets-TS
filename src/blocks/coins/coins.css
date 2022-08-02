@@ -1,0 +1,128 @@
+.coins {
+  background-color: white;
+}
+
+.coins__amout {
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.coins__change {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.coins__classify {
+  list-style: none;
+  margin-top: 16px;
+  display: flex;
+  column-gap: 32px;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 0 23px;
+}
+
+.coins__cost-change {
+  margin: 0;
+  color: #16a34a;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.coins__cost-change_positive {
+  color: #16a34a;
+}
+
+.coins__cost-change_negative {
+  color: red;
+}
+
+.coins__cost-one {
+  margin: 0;
+  color: #595959;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.coins__currensy {
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.coins__icon {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  grid-row: 1 / 3;
+}
+
+.coins__list {
+  margin: 0;
+  padding: 0 23px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.coins__name {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  margin: 0 13px;
+  padding-bottom: 16px;
+  color: #8c8c8c;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.coins__name:hover {
+  box-shadow: 0 1px 0 #2563eb;
+  color: black;
+}
+
+.coins__token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  padding: 8px 0;
+}
+
+.coins__token-import {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.coins__token-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #1a1a1a;
+}
+
+.coins__total-cost {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #8c8c8c;
+}
+
+.coins__unit {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 16px 0;
+}

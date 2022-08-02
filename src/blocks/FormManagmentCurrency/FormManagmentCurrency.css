@@ -1,0 +1,103 @@
+.formManagmentCurrencyContainer {
+  padding-top: 25px;
+  position: fixed;
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 375px;
+  bottom: 34px;
+}
+
+.formManagmentCurrency {
+  background-color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+  box-shadow: 0 -10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.formManagmentCurrency__title {
+  padding: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+}
+.formManagmentCurrency__close {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  border: none;
+  background-image: url(../../image/closeButtonIcon.svg);
+  width: 36px;
+  height: 36px;
+}
+
+.formManagmentCurrency__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formManagmentCurrency__field {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.formManagmentCurrency__label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.formManagmentCurrency__input,
+.formManagmentCurrency__select {
+  box-sizing: content-box;
+  padding: 0;
+  font-family: inherit;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  border-radius: 12px;
+}
+
+.formManagmentCurrency__select {
+  appearance: none;
+}
+
+.formManagmentCurrency__select {
+  background-image: url(../../image/main-icon/wallet-choice-button.svg);
+  background-repeat: no-repeat no-repeat;
+
+  background-position: right 15px top 50%;
+}
+
+.formManagmentCurrency__input:focus,
+.formManagmentCurrency__select:focus {
+  outline: none;
+}
+
+.formManagmentCurrency__button {
+  background-color: black;
+  margin: 20px auto 0;
+  width: 75%;
+  color: white;
+  border: none;
+  padding: 16px 42px;
+  border-radius: 100px;
+  transition: background-color 0.3s linear;
+}
+
+.formManagmentCurrency__button:hover {
+  background-color: #2563eb;
+}
