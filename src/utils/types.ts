@@ -5,9 +5,7 @@ export interface CoinProps {
   defaultCurrency: number;
 }
 
-export type FormProps = {
-  coins: CoinProps[];
-  openDialog: (currentDialogType: string) => void;
-  currentDialogType: string;
-  updateCoins: (coins: CoinProps[]) => void;
-};
+export enum DialogsType {
+  SEND = "SEND",
+  RECEIVE = "RECEIVE",
+}
