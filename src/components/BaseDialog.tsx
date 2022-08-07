@@ -1,41 +1,56 @@
-import { useState } from 'react';
-import { formatter } from '../utils/formater';
-import { CoinProps, FormProps } from '../utils/types';
+import { useMemo, useState } from "react";
+import { formatter } from "../utils/formater";
+import { CoinProps, DialogsType } from "../utils/types";
+import { Action } from "./App";
+
+export type Props = {
+  coins: CoinProps[];
+  openDialog: (currentDialogType: DialogsType | null) => void;
+  currentDialogType: DialogsType | null;
+  updateCoins: (action: Action) => void;
+};
 
 export const BaseDialog = ({
   coins,
   updateCoins,
   currentDialogType,
   openDialog,
-}: FormProps) => {
-  const [value, setValue] = useState('');
-  const [currency, setCurrency] = useState('BTC');
+}: Props) => {
+  const [value, setValue] = useState("");
+  const [currency, setCurrency] = useState("BTC");
 
   const changeValue = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setValue(evt.target.value);
   };
 
-  // const result =
-  // Number(value) * coins.find((coin) => coin.id === currency).rate;
+  const result = useMemo(() => {
+    const coin = coins.find((coin) => coin.id === currency);
 
-  const closeForm = () => openDialog('');
+    if (!coin) {
+      return 0;
+    }
 
-  const changeAmountCoin = (coin: CoinProps) => {
-    const newCoin = coin;
-    currentDialogType === 'Send'
-      ? (newCoin.amount -= Number(value))
-      : (newCoin.amount += Number(value));
+    return Number(value) * coin.rate;
+  }, [value, coins, currency]);
 
-    return newCoin;
-  };
+  const closeForm = () => openDialog(null);
+
   const makeDeal = (evt: React.MouseEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    updateCoins(
-      coins.map((coin) =>
-        coin.id === currency ? changeAmountCoin(coin) : coin
-      )
-    );
-    openDialog('');
+
+    if (!currentDialogType) {
+      return;
+    }
+
+    updateCoins({
+      type: currentDialogType,
+      payload: {
+        currency,
+        value: Number(value),
+      },
+    });
+
+    openDialog(null);
   };
 
   const changeCurrency = (evt: React.ChangeEvent<HTMLSelectElement>) => {
@@ -43,25 +58,25 @@ export const BaseDialog = ({
   };
 
   return (
-    <div className='formManagmentCurrencyContainer'>
-      <form className='formManagmentCurrency' onSubmit={makeDeal}>
-        <div className='formManagmentCurrency__head'>
-          <legend className='formManagmentCurrency__title'>
+    <div className="formManagmentCurrencyContainer">
+      <form className="formManagmentCurrency" onSubmit={makeDeal}>
+        <div className="formManagmentCurrency__head">
+          <legend className="formManagmentCurrency__title">
             {currentDialogType}
           </legend>
           <button
-            className='formManagmentCurrency__close'
+            className="formManagmentCurrency__close"
             onClick={closeForm}
           ></button>
         </div>
-        <fieldset className='formManagmentCurrency__field'>
-          <label className='formManagmentCurrency__label' htmlFor='currency'>
+        <fieldset className="formManagmentCurrency__field">
+          <label className="formManagmentCurrency__label" htmlFor="currency">
             Currency
           </label>
           <select
-            name='currency'
-            id=''
-            className='formManagmentCurrency__select'
+            name="currency"
+            id=""
+            className="formManagmentCurrency__select"
             onChange={changeCurrency}
             value={currency}
           >
@@ -71,23 +86,23 @@ export const BaseDialog = ({
             })}
           </select>
         </fieldset>
-        <fieldset className='formManagmentCurrency__field'>
-          <label className='formManagmentCurrency__label' htmlFor='value'>
+        <fieldset className="formManagmentCurrency__field">
+          <label className="formManagmentCurrency__label" htmlFor="value">
             Value
           </label>
           <input
-            className='formManagmentCurrency__input'
-            type='number'
-            name='value'
+            className="formManagmentCurrency__input"
+            type="number"
+            name="value"
             value={value}
             onChange={changeValue}
-            placeholder='Введите суммы валюты'
+            placeholder="Введите суммы валюты"
             required
           />
         </fieldset>
-        <button type='submit' className='formManagmentCurrency__button'>
+        <button type="submit" className="formManagmentCurrency__button">
           {currentDialogType}&nbsp;
-          {/* {!value ? '' : formatter.format(result)} */}
+          {!value ? "" : formatter.format(result)}
         </button>
       </form>
     </div>
